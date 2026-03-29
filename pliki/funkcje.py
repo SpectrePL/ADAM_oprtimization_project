@@ -20,7 +20,7 @@ class Sphere(function_template):
         return 2*x
 
 class Rosenbrock(function_template):
-    def __init__(self, start_point, a=1.0, b=100.0):
+    def __init__(self, start_point=np.array([-5,10]), a=1.0, b=100.0):
         super().__init__(start_point,nazwa_funkcji="Rosenbrocka")
         self.a=a
         self.b=b 
@@ -41,7 +41,7 @@ class Rosenbrock(function_template):
         return np.array([dx1,dx2])
 
 class Three_Hump(function_template):
-    def __init__(self, start_point):
+    def __init__(self, start_point=np.array([-5,5])):
         super().__init__(start_point,nazwa_funkcji="Three_Hump")
         
     
@@ -61,7 +61,7 @@ class Three_Hump(function_template):
         return np.array([dx1,dx2])
 
 class Himmelblau(function_template):
-    def __init__(self, start_point):
+    def __init__(self, start_point=np.array([-5,5])):
         super().__init__(start_point,nazwa_funkcji="Himmelblau")
         
     

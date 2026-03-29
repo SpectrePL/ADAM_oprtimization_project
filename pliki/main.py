@@ -6,9 +6,8 @@ from ADAM import ADAM as ADAM
 
 def main():
 
-    x0 = [-5.0, 5.0]
-    test_function=Himmelblau(x0)
-
+    test_function=Rosenbrock()
+    print(f"Punkt startowy: {test_function.start_point}")
     adam = ADAM(test_function)
 
     print("Optymalizacja rozpoczęta")
@@ -18,7 +17,7 @@ def main():
     print(f"Osiągnięta wartość funkcji: {fval_min}")
 
     #adam.wykres_fval()
-    adam.wykres_sciezka_3d()
+   # adam.wykres_sciezka_3d()
 
 if __name__ == "__main__":
     main()
