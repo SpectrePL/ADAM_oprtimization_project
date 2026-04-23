@@ -9,7 +9,7 @@ from ADAM import ADAM as ADAM
 def main():
 
     kara1=Kara(-0.5,-1,1.5,"kara")
-    Rosen=Ros()
+    Rosen=Th()
     test_function=Fun_K(Rosen,[kara1],None,10000)
     print(f"Punkt startowy: {test_function.start_point}")
     adam = ADAM(test_function)

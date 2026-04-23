@@ -65,10 +65,26 @@ class ADAM:
         plt.show()
 
 
-    def wykres_sciezka_3d(self, x_zakres=(-5.0, 2.0), y_zakres=(-0.0, 12.0), gestosc=1000):
-        print("Generowanie wykresu 3D (to może chwilę potrwać)...")
+    def wykres_sciezka_3d(self, margines=0.2, gestosc=100):
+        print(f"Generowanie wykresu 3D dla {self.funkcja.nazwa_funkcji} (to może chwilę potrwać)...")
         
-        # 1. Tworzenie siatki dla powierzchni funkcji (krajobraz)
+        # 1. Pobieranie danych z historii algorytmu
+        historia_x = [pozycja[0] for pozycja in self.historia_pozycji]
+        historia_y = [pozycja[1] for pozycja in self.historia_pozycji]
+        historia_z = self.historia_wartosci
+        
+        # 2. Automatyczne skalowanie z marginesem
+        def oblicz_zakres(dane, m):
+            d_min, d_max = min(dane), max(dane)
+            rozpietosc = d_max - d_min
+            # Jeśli algorytm stał w miejscu, tworzymy sztuczną rozpiętość
+            if rozpietosc == 0: rozpietosc = 1.0
+            return d_min - m * rozpietosc, d_max + m * rozpietosc
+
+        x_zakres = oblicz_zakres(historia_x, margines)
+        y_zakres = oblicz_zakres(historia_y, margines)
+
+        # 3. Tworzenie siatki dla powierzchni funkcji
         x_wartosci = np.linspace(x_zakres[0], x_zakres[1], gestosc)
         y_wartosci = np.linspace(y_zakres[0], y_zakres[1], gestosc)
         X, Y = np.meshgrid(x_wartosci, y_wartosci)
@@ -77,27 +93,21 @@ class ADAM:
         # Obliczanie wysokości (Z) dla każdego punktu na siatce
         for i in range(gestosc):
             for j in range(gestosc):
-                # Przekazujemy punkt [X, Y] do naszej funkcji celu
                 Z[i, j] = self.funkcja.fval([X[i, j], Y[i, j]])
                 
-        # 2. Pobieranie danych z historii algorytmu
-        # Rozdzielamy wektory pozycji na osobne listy X i Y
-        historia_x = [pozycja[0] for pozycja in self.historia_pozycji]
-        historia_y = [pozycja[1] for pozycja in self.historia_pozycji]
-        historia_z = self.historia_wartosci
-        
-        # 3. Rysowanie w Plotly
+        # 4. Rysowanie w Plotly
         fig = go.Figure()
         
-        # Dodanie powierzchni funkcji (półprzezroczysta, żeby widzieć ścieżkę)
+        # Dodanie powierzchni funkcji
         fig.add_trace(go.Surface(
             z=Z, x=X, y=Y, 
             colorscale='Viridis', 
             opacity=0.6, 
-            name='Powierzchnia f(x)'
+            name='Powierzchnia f(x)',
+            showscale=False
         ))
         
-        # Dodanie ścieżki algorytmu (czerwone punkty połączone linią)
+        # Dodanie ścieżki algorytmu ADAM
         fig.add_trace(go.Scatter3d(
             x=historia_x, y=historia_y, z=historia_z,
             mode='lines+markers',
@@ -106,18 +116,19 @@ class ADAM:
             name='Ścieżka ADAM'
         ))
         
-        # Ustawienia wyglądu
+        # Ustawienia wyglądu i dynamiczne zakresy osi
         fig.update_layout(
-            title='Zmiana wartości algorytmu ADAM w 3D',
+            title=f'Optymalizacja ADAM: {self.funkcja.nazwa_funkcji}',
             scene=dict(
-                xaxis_title='Oś X1',
-                yaxis_title='Oś X2',
-                zaxis_title='Wartość f(x)'
+                xaxis=dict(title='Oś X1', range=[x_zakres[0], x_zakres[1]]),
+                yaxis=dict(title='Oś X2', range=[y_zakres[0], y_zakres[1]]),
+                zaxis=dict(title='Wartość f(x)')
             ),
-            width=900, height=700
+            width=1000, height=800,
+            margin=dict(l=0, r=0, b=0, t=50)
         )
         
-        # 4. Zapis do pliku HTML
+        # 5. Zapis do pliku HTML
         nazwa_pliku = f"sciezka_adam_3d_{self.funkcja.nazwa_funkcji}.html"
         fig.write_html(nazwa_pliku)
-        print(f"Gotowe! Wykres zapisano jako '{nazwa_pliku}'. Otwórz go w przeglądarce internetowej.")           
+        print(f"Gotowe! Wykres zapisano jako '{nazwa_pliku}'.") 
