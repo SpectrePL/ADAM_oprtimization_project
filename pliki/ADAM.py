@@ -5,7 +5,7 @@ import matplotlib
 matplotlib.use('TkAgg')
 
 class ADAM:
-    def __init__(self, funkcja_celu, alpha=0.01, beta1=0.9, beta2=0.999, eps=1e-8, max_iter=1000):
+    def __init__(self, funkcja_celu, alpha=0.01, beta1=0.9, beta2=0.999, eps=1e-8, max_iter=100000):
         #ukradnięcie funkcji
         self.funkcja = funkcja_celu
         #hiperparametry adama
@@ -23,6 +23,11 @@ class ADAM:
         self.historia_pozycji=[np.copy(self.x)] 
         self.historia_wartosci=[self.funkcja.fval(self.x)]
 
+        self.brak_zmian = 0
+        self.brak_zmian_maxiter = 10
+        self.warunek_braku_zmian = 1e-10
+
+
     def optymalizuj(self):
         for _ in range(self.max_iter): #tymczasowo tylko ten warunek stopu
             self.t+=1
@@ -37,7 +42,15 @@ class ADAM:
             self.historia_pozycji.append(np.copy(self.x))
             self.historia_wartosci.append(self.funkcja.fval(self.x))
             #tu się dorobi ekstra warunek stopu
-
+            if self.t>self.brak_zmian_maxiter:
+                for i in range(self.brak_zmian_maxiter):
+                    if abs(self.historia_wartosci[self.t -i ] - self.historia_wartosci[self.t - i - 1]) < self.warunek_braku_zmian: 
+                        self.brak_zmian += 1
+                if self.brak_zmian == self.brak_zmian_maxiter:
+                    print(f"Przerwano przez brak zmian; iteracja: {self.t}")
+                    break
+            self.brak_zmian = 0
+        print(f"Iteracja: {self.t}")
         return self.x, self.historia_wartosci[-1]
     
     def wykres_fval(self):
@@ -52,7 +65,7 @@ class ADAM:
         plt.show()
 
 
-    def wykres_sciezka_3d(self, x_zakres=(-5.0, 2.0), y_zakres=(-2.0, 5.0), gestosc=100):
+    def wykres_sciezka_3d(self, x_zakres=(-5.0, 2.0), y_zakres=(-0.0, 12.0), gestosc=1000):
         print("Generowanie wykresu 3D (to może chwilę potrwać)...")
         
         # 1. Tworzenie siatki dla powierzchni funkcji (krajobraz)
