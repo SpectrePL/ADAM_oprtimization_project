@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<optimization_project>
+    <adam_defaults>
+        <alpha>0.01</alpha>
+        <beta1>0.9</beta1>
+        <beta2>0.999</beta2>
+        <eps>1e-8</eps>
+        <max_iter>10000</max_iter>
+    </adam_defaults>
+
+    <experiments>
+
+        <experiment id="EXP_001">
+            <name>Rosenbrock - test standardowy bez ograniczen</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>2.0</coordinate>
+                <coordinate>2.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+        <experiment id="EXP_001">
+            <name>Rosenbrock - Start z lewej flanki</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>10.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+        <experiment id="EXP_001">
+            <name>Rosenbrock - Start z prawej flanki</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>4.0</coordinate>
+                <coordinate>-2.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+
+        <experiment id="EXP_002">
+            <name>Rosenbrock - liniowe ograniczenie rownosciowe (mala kara)</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>10.0</coordinate>
+            </start_point>
+            <is_constrained>true</is_constrained>
+            
+            <penalty_config>
+                <r>1.0</r>
+                <constraints>
+                    <constraint type="equality">
+                        <class_name>Wartosc_Kary</class_name>
+                        <parameters>
+                            <param name="a">-0.5</param>
+                            <param name="b">-1.0</param>
+                            <param name="c">1.5</param>
+                        </parameters>
+                    </constraint>
+                </constraints>
+            </penalty_config>
+        </experiment>
+
+        <experiment id="EXP_003">
+            <name>Rosenbrock - liniowe ograniczenie rownosciowe (duza kara)</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>10.0</coordinate>
+            </start_point>
+            <is_constrained>true</is_constrained>
+            
+            <penalty_config>
+                <r>10000.0</r>
+                <constraints>
+                    <constraint type="equality">
+                        <class_name>Wartosc_Kary</class_name>
+                        <parameters>
+                            <param name="a">-0.5</param>
+                            <param name="b">-1.0</param>
+                            <param name="c">1.5</param>
+                        </parameters>
+                    </constraint>
+                </constraints>
+            </penalty_config>
+        </experiment>
+
+        <experiment id="EXP_004">
+            <name>Three Hump Camel - ograniczenie kolowe</name>
+            <function_name>Three_Hump</function_name>
+            <start_point>
+                <coordinate>-1.0</coordinate>
+                <coordinate>1.0</coordinate>
+            </start_point>
+            <is_constrained>true</is_constrained>
+            
+            <penalty_config>
+                <r>500.0</r>
+                <constraints>
+                    <constraint type="inequality">
+                        <class_name>Constraint_Circle</class_name>
+                        <parameters>
+                            <param name="c">1.0</param>
+                        </parameters>
+                    </constraint>
+                </constraints>
+            </penalty_config>
+        </experiment>
+
+
+        <experiment id="EXP_005">
+            <name>Rosenbrock - wieksze alpha</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>10.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="alpha">0.05</param>
+                <param name="max_iter">5000</param>
+            </hyperparameters>
+        </experiment>
+
+        <experiment id="EXP_005">
+            <name>Rosenbrock - base alpha</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>10.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="max_iter">5000</param>
+            </hyperparameters>
+        </experiment>
+
+        <experiment id="EXP_005">
+            <name>Rosenbrock - mniejsze alpha</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>10.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="alpha">0.005</param>
+                <param name="max_iter">5000</param>
+            </hyperparameters>
+        </experiment>        
+
+    </experiments>
+</optimization_project>

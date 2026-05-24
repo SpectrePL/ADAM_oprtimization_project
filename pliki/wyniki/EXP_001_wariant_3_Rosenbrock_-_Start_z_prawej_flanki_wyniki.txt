@@ -1,0 +1,13 @@
+RAPORT Z PRZEBIEGU: Rosenbrock - Start z prawej flanki
+ID grupy wykresów:  EXP_001
+Punkt startowy:     [ 4. -2.]
+PARAMETRY ALGORYTMU ADAM:
+Alpha:    0.01
+Beta1:    0.9
+Beta2:    0.999
+Eps:      1e-08
+Max iter: 10000
+Wyniki działania algorytmu:
+Wykonanych iteracji: 10000
+Znalezione minimum:  [1.2198899  1.48856657]
+Wartość funkcji:     0.0483705085

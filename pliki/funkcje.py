@@ -129,3 +129,15 @@ class Funkcja_Z_Kara(function_template):
             total_grad += 2 * self.r * val_h * h.grad_val(x)
         return total_grad
 
+class Constraint_Circle(function_template):
+    def __init__(self, c=1.0, nazwa="Kolo_Ograniczenie"):
+        super().__init__(start_point=np.array([0, 0]), nazwa_funkcji=nazwa)
+        self.c = float(c)
+
+    def fval(self, x):
+        x1, x2 = x[0], x[1]
+        return x1**2 + x2**2 - self.c
+
+    def grad_val(self, x):
+        x1, x2 = x[0], x[1]
+        return np.array([2*x1, 2*x2])
