@@ -35,4 +35,12 @@ Template eksperymentu:
                     </constraint>
                 </constraints>
             </penalty_config>
+
+			<hyperparameters>(kontener całkowicie opcjonalny; każdy z parametrów również opcjonalny (nie ustawiony parametr brany jest z ustawień domyślnych))
+                <param name="alpha">float</param>
+				<param name="beta1">float</param>
+        		<param name="beta2">float</param>
+        		<param name="eps">float</param>
+                <param name="max_iter">int</param>
+            </hyperparameters>
         </experiment>
