@@ -11,7 +11,7 @@ Instrukcja obsługi kodu:
 4. Wygenerowane wyniki (wykres 3D, poziomicowy i raporty txt) znajdują się w folderze wyniki
 
 Template eksperymentu:
-
+```xml
 <experiment id="Numer ID (np EXP001)"> (W przypadku chęci stworzenia kilku trajektorii na jednym wykresie należy stworzyć drugi eksperyment i nadać mu identyczne id)
             <name>Nazwa eksperymentu</name>
             <function_name>Nazwa funkcji (klasy z pliku funkcje.py)</function_name>
