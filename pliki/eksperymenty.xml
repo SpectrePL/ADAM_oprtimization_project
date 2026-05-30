@@ -5,7 +5,7 @@
         <beta1>0.9</beta1>
         <beta2>0.999</beta2>
         <eps>1e-8</eps>
-        <max_iter>10000</max_iter>
+        <max_iter>50000</max_iter>
     </adam_defaults>
 
     <experiments>
@@ -123,7 +123,7 @@
             
             <hyperparameters>
                 <param name="alpha">0.05</param>
-                <param name="max_iter">5000</param>
+                <param name="max_iter">10000</param>
             </hyperparameters>
         </experiment>
 
@@ -137,7 +137,7 @@
             <is_constrained>false</is_constrained>
             
             <hyperparameters>
-                <param name="max_iter">5000</param>
+                <param name="max_iter">10000</param>
             </hyperparameters>
         </experiment>
 
@@ -152,7 +152,7 @@
             
             <hyperparameters>
                 <param name="alpha">0.005</param>
-                <param name="max_iter">5000</param>
+                <param name="max_iter">10000</param>
             </hyperparameters>
         </experiment>        
 

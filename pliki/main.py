@@ -23,7 +23,7 @@ def main():
 
         lista_uruchomien_adam = []
         for run_idx, run in enumerate(grupa['runs']):
-            print(f"\n  -> Wariant {run_idx + 1}: {run['name']} | Start: {run['start_point']}")
+            print(f"\n  Wariant {run_idx + 1}: {run['name']} | Start: {run['start_point']}")
             
             klasa_funkcji = DOSTEPNE_KLASY[run['function_name']]
             funkcja_celu = klasa_funkcji(start_point=run['start_point'])

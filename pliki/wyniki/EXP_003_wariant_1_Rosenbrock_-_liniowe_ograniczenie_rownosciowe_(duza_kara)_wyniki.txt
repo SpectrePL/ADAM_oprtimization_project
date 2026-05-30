@@ -6,7 +6,7 @@ Alpha:    0.01
 Beta1:    0.9
 Beta2:    0.999
 Eps:      1e-08
-Max iter: 10000
+Max iter: 50000
 Wyniki działania algorytmu:
 Wykonanych iteracji: 5384
 Znalezione minimum:  [-1.49594975  2.24787505]
