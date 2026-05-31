@@ -8,6 +8,6 @@ Beta2:    0.999
 Eps:      1e-08
 Max iter: 1000
 Wyniki działania algorytmu:
-Wykonanych iteracji: 361
-Znalezione minimum:  [-1.49194705  2.23593942]
-Wartość funkcji:     6.2299353780
+Wykonanych iteracji: 299
+Znalezione minimum:  [-1.49518191  2.24558691]
+Wartość funkcji:     6.2379768265

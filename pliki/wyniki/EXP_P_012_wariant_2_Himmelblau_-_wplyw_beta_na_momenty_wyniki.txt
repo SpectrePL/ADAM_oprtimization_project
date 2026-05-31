@@ -1,0 +1,13 @@
+RAPORT Z PRZEBIEGU: Himmelblau - wplyw beta na momenty
+ID grupy wykresów:  EXP_P_012
+Punkt startowy:     [-5.  5.]
+PARAMETRY ALGORYTMU ADAM:
+Alpha:    0.2
+Beta1:    0.9
+Beta2:    0.999
+Eps:      1e-08
+Max iter: 100
+Wyniki działania algorytmu:
+Wykonanych iteracji: 100
+Znalezione minimum:  [-2.5744933   6.62767474]
+Wartość funkcji:     12.7770140149

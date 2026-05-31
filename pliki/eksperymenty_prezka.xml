@@ -140,7 +140,7 @@
             <is_constrained>true</is_constrained>
             
             <penalty_config>
-                <r>100.0</r>
+                <r>500.0</r>
                 <constraints>
                     <constraint type="equality">
                         <class_name>Wartosc_Kary</class_name>
@@ -154,31 +154,8 @@
             </penalty_config>
         </experiment>
 
-        <experiment id="EXP_003">
-            <name>Rosenbrock - liniowe ograniczenie rownosciowe (duza kara)</name>
-            <function_name>Rosenbrock</function_name>
-            <start_point>
-                <coordinate>-5.0</coordinate>
-                <coordinate>10.0</coordinate>
-            </start_point>
-            <is_constrained>true</is_constrained>
-            
-            <penalty_config>
-                <r>10000.0</r>
-                <constraints>
-                    <constraint type="equality">
-                        <class_name>Wartosc_Kary</class_name>
-                        <parameters>
-                            <param name="a">-0.5</param>
-                            <param name="b">-1.0</param>
-                            <param name="c">1.5</param>
-                        </parameters>
-                    </constraint>
-                </constraints>
-            </penalty_config>
-        </experiment>
 
-        <experiment id="EXP_004">
+        <experiment id="EXP_P_008">
             <name>Three Hump Camel - ograniczenie kolowe</name>
             <function_name>Three_Hump</function_name>
             <start_point>
@@ -200,50 +177,232 @@
             </penalty_config>
         </experiment>
 
+        <experiment id="EXP_P_009">
+            <name>Himmelblau - ograniczenia </name>
+            <function_name>Three_Hump</function_name>
+            <start_point>
+                <coordinate>-1.0</coordinate>
+                <coordinate>1.0</coordinate>
+            </start_point>
+            <is_constrained>true</is_constrained>
+            
+            <penalty_config>
+                <r>1000.0</r>
+                <constraints>
+                    <constraint type="inequality">
+                        <class_name>Constraint_Circle</class_name>
+                        <parameters>
+                            <param name="c">1.5</param>
+                        </parameters>
+                    </constraint>
+                    <constraint type="equality">
+                        <class_name>Wartosc_Kary</class_name>
+                        <parameters>
+                            <param name="a">-0.5</param>
+                            <param name="b">-0.2</param>
+                            <param name="c">0.5</param>
+                        </parameters>
+                    </constraint>
+                </constraints>
+            </penalty_config>
+        </experiment>
 
-        <experiment id="EXP_005">
-            <name>Rosenbrock - wieksze alpha</name>
+
+        <experiment id="EXP_P_010">
+            <name>Rosenbrock - różne alpha</name>
             <function_name>Rosenbrock</function_name>
             <start_point>
-                <coordinate>-5.0</coordinate>
-                <coordinate>10.0</coordinate>
+                <coordinate>2.0</coordinate>
+                <coordinate>2.0</coordinate>
             </start_point>
             <is_constrained>false</is_constrained>
             
             <hyperparameters>
-                <param name="alpha">0.05</param>
+                <param name="alpha">0.8</param>
                 <param name="max_iter">10000</param>
             </hyperparameters>
         </experiment>
 
-        <experiment id="EXP_005">
+        <experiment id="EXP_P_010">
             <name>Rosenbrock - base alpha</name>
             <function_name>Rosenbrock</function_name>
             <start_point>
-                <coordinate>-5.0</coordinate>
-                <coordinate>10.0</coordinate>
+                <coordinate>2.0</coordinate>
+                <coordinate>2.0</coordinate>
             </start_point>
             <is_constrained>false</is_constrained>
             
             <hyperparameters>
+                <param name="alpha">0.5</param>
                 <param name="max_iter">10000</param>
             </hyperparameters>
         </experiment>
 
-        <experiment id="EXP_005">
+        <experiment id="EXP_P_010">
             <name>Rosenbrock - mniejsze alpha</name>
             <function_name>Rosenbrock</function_name>
             <start_point>
-                <coordinate>-5.0</coordinate>
-                <coordinate>10.0</coordinate>
+                <coordinate>2.0</coordinate>
+                <coordinate>2.0</coordinate>
             </start_point>
             <is_constrained>false</is_constrained>
             
             <hyperparameters>
-                <param name="alpha">0.005</param>
+                <param name="alpha">0.1</param>
                 <param name="max_iter">10000</param>
             </hyperparameters>
-        </experiment>        
+        </experiment>
+
+
+        <experiment id="EXP_P_011">
+            <name>Himmelblau - wplyw beta 1 na momenty</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="beta1">0.95</param>
+                <param name="max_iter">100</param>
+            </hyperparameters>
+        </experiment>
+
+        <experiment id="EXP_P_011">
+            <name>Himmelblau - wplyw beta 1 na momenty</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="max_iter">100</param>
+            </hyperparameters>
+        </experiment>
+
+        <experiment id="EXP_P_011">
+            <name>Himmelblau - wplyw beta 1 na momenty</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="beta1">0.7</param>
+                <param name="max_iter">100</param>
+            </hyperparameters>
+        </experiment>
+
+
+        <experiment id="EXP_P_012">
+            <name>Himmelblau - wplyw beta 1 na momenty</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="beta1">0.95</param>
+                <param name="max_iter">100</param>
+            </hyperparameters>
+        </experiment>
+
+        <experiment id="EXP_P_012">
+            <name>Himmelblau - wplyw beta 1 na momenty</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="max_iter">100</param>
+            </hyperparameters>
+        </experiment>
+
+        <experiment id="EXP_P_012">
+            <name>Himmelblau - wplyw beta 1 na momenty</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="beta1">0.7</param>
+                <param name="max_iter">100</param>
+            </hyperparameters>
+        </experiment>
+
+        <experiment id="EXP_P_012">
+            <name>Himmelblau - wplyw beta 1 na momenty</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="beta1">0.7</param>
+                <param name="max_iter">10000</param>
+            </hyperparameters>
+        </experiment>
+
+
+        <experiment id="EXP_P_013">
+            <name>Himmelblau - wplyw beta 2 na momenty</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="beta2">0.9999</param>
+                <param name="max_iter">100</param>
+            </hyperparameters>
+        </experiment>
+
+        <experiment id="EXP_P_013">
+            <name>Himmelblau - wplyw beta 2 na momenty</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="max_iter">100</param>
+            </hyperparameters>
+        </experiment>
+
+        <experiment id="EXP_P_013">
+            <name>Himmelblau - wplyw beta 2 na momenty</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+            
+            <hyperparameters>
+                <param name="beta2">0.7</param>
+                <param name="max_iter">100</param>
+            </hyperparameters>
+        </experiment>
+
 
     </experiments>
 </optimization_project>
