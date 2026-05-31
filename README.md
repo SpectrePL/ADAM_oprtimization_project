@@ -4,7 +4,7 @@ W pliku requriments znajdują się wykorzystywame biblioteki i ich wersje
 
 Instrukcja obsługi kodu:
 1. W pliku eksperymenty.xml znajdują się konfiguracje poszczególnych uruchomień
-2. W celu sprawdzenia nowego przypadku należy:
+2. W celu sprawdzenia nowego przypadku należy: 
  a) (zalecane) Stworzyć nowy eksperyment na bazie formatu pozostałych, dodać go do pliku
  b) Stworzyć nowy plik xml z pojedynczym ekspetymentem i w linii 17 zmienić adres pliku na nowy (należy pamiętać by umieścić na samej górze podstawowe ustawienia parametrów algorytmu ADAM)
 4. Następnie należy w folderze pliki odpalić plik main
