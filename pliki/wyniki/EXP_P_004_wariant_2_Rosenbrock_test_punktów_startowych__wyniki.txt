@@ -1,0 +1,13 @@
+RAPORT Z PRZEBIEGU: Rosenbrock test punktów startowych 
+ID grupy wykresów:  EXP_P_004
+Punkt startowy:     [5. 0.]
+PARAMETRY ALGORYTMU ADAM:
+Alpha:    0.2
+Beta1:    0.9
+Beta2:    0.999
+Eps:      1e-08
+Max iter: 1000
+Wyniki działania algorytmu:
+Wykonanych iteracji: 1000
+Znalezione minimum:  [1.62012478 2.62585505]
+Wartość funkcji:     0.3846651493

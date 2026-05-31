@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <optimization_project>
     <adam_defaults>
-        <alpha>0.5</alpha>
-        <beta1>0.95</beta1>
+        <alpha>0.2</alpha>
+        <beta1>0.9</beta1>
         <beta2>0.999</beta2>
         <eps>1e-8</eps>
         <max_iter>1000</max_iter>
@@ -10,8 +10,8 @@
 
     <experiments>
 
-        <experiment id="EXP_001">
-            <name>Rosenbrock - test standardowy bez ograniczen</name>
+        <experiment id="EXP_P_001">
+            <name>Rosenbrock test standardowy </name>
             <function_name>Rosenbrock</function_name>
             <start_point>
                 <coordinate>2.0</coordinate>
@@ -20,29 +20,118 @@
             <is_constrained>false</is_constrained>
         </experiment>
 
-        <experiment id="EXP_001">
-            <name>Rosenbrock - Start z lewej flanki</name>
-            <function_name>Rosenbrock</function_name>
+        <experiment id="EXP_P_002">
+            <name>Three Hump test standardowy</name>
+            <function_name>Three_Hump</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
-                <coordinate>10.0</coordinate>
+                <coordinate>5.0</coordinate>
             </start_point>
             <is_constrained>false</is_constrained>
         </experiment>
 
-        <experiment id="EXP_001">
-            <name>Rosenbrock - Start z prawej flanki</name>
+        <experiment id="EXP_P_003">
+            <name>Himmelblau test standardowy</name>
+            <function_name>Himmelblau</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+        <experiment id="EXP_P_004">
+            <name>Rosenbrock test punktów startowych </name>
             <function_name>Rosenbrock</function_name>
             <start_point>
-                <coordinate>4.0</coordinate>
-                <coordinate>-2.0</coordinate>
+                <coordinate>2.0</coordinate>
+                <coordinate>2.0</coordinate>
             </start_point>
             <is_constrained>false</is_constrained>
         </experiment>
 
+        <experiment id="EXP_P_004">
+            <name>Rosenbrock test punktów startowych </name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>5.0</coordinate>
+                <coordinate>0.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
 
-        <experiment id="EXP_002">
-            <name>Rosenbrock - liniowe ograniczenie rownosciowe (mala kara)</name>
+        <experiment id="EXP_P_004">
+            <name>Rosenbrock test punktów startowych </name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>-8.0</coordinate>
+                <coordinate>6.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+        <experiment id="EXP_P_005">
+            <name>Himmelblau test punktów startowych </name>
+            <function_name>Himmelblau</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+        <experiment id="EXP_P_005">
+            <name>Himmelblau test punktów startowych </name>
+            <function_name>Himmelblau</function_name>
+            <start_point>
+                <coordinate>0.0</coordinate>
+                <coordinate>0.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+        <experiment id="EXP_P_005">
+            <name>Himmelblau test punktów startowych </name>
+            <function_name>Himmelblau</function_name>
+            <start_point>
+                <coordinate>9.0</coordinate>
+                <coordinate>7.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+        <experiment id="EXP_P_006">
+            <name>Three Hump test punktów startowych </name>
+            <function_name>Three_Hump</function_name>
+            <start_point>
+                <coordinate>-5.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+        <experiment id="EXP_P_006">
+            <name>Three Hump test punktów startowych </name>
+            <function_name>Three_Hump</function_name>
+            <start_point>
+                <coordinate>10.0</coordinate>
+                <coordinate>5.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+        <experiment id="EXP_P_006">
+            <name>Three Hump test punktów startowych </name>
+            <function_name>Three_Hump</function_name>
+            <start_point>
+                <coordinate>4.0</coordinate>
+                <coordinate>-7.0</coordinate>
+            </start_point>
+            <is_constrained>false</is_constrained>
+        </experiment>
+
+        <experiment id="EXP_P_007">
+            <name>Rosenbrock - liniowe ograniczenie rownosciowe</name>
             <function_name>Rosenbrock</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
@@ -51,7 +140,7 @@
             <is_constrained>true</is_constrained>
             
             <penalty_config>
-                <r>1.0</r>
+                <r>100.0</r>
                 <constraints>
                     <constraint type="equality">
                         <class_name>Wartosc_Kary</class_name>

@@ -2,7 +2,7 @@ import os
 import numpy as np
 
 from funkcje import Sphere, Rosenbrock, Three_Hump, Himmelblau, Wartosc_Kary, Funkcja_Z_Kara, Constraint_Circle
-from ADAM import ADAM, wykres_grupowy_3d, wykres_grupowy_poziomicowy
+from ADAM import ADAM, wykres_grupowy_3d, wykres_grupowy_poziomicowy, wykres_grupowy_momentow
 from parser_xml import wczytaj_konfiguracje_xml
 
 DOSTEPNE_KLASY = {
@@ -14,7 +14,7 @@ DOSTEPNE_KLASY = {
 }
 
 def main():
-    konfiguracja = wczytaj_konfiguracje_xml('eksperymenty.xml')
+    konfiguracja = wczytaj_konfiguracje_xml('eksperymenty_prezka.xml')
     adam_params = konfiguracja['adam_defaults']
 
     for grupa in konfiguracja['experiment_groups']:
@@ -52,7 +52,8 @@ def main():
             os.makedirs('wyniki', exist_ok=True)
             czysta_nazwa_runu = run['name'].replace(' ', '_').replace('/', '_')
             nazwa_pliku_txt = os.path.join('wyniki', f"{grupa['id']}_wariant_{run_idx+1}_{czysta_nazwa_runu}_wyniki.txt")
-            
+
+
             with open(nazwa_pliku_txt, 'w', encoding='utf-8') as f:
                 f.write(f"RAPORT Z PRZEBIEGU: {run['name']}\n")
                 f.write(f"ID grupy wykresów:  {grupa['id']}\n")
@@ -71,6 +72,7 @@ def main():
         print(f"\n[WIZUALIZACJA] Rysowanie trajektorii dla grupy {grupa['id']}...")
         wykres_grupowy_3d(lista_uruchomien_adam, exp_id=grupa['id'], exp_name=grupa['name'])
         wykres_grupowy_poziomicowy(lista_uruchomien_adam, exp_id=grupa['id'], exp_name=grupa['name'])
+        wykres_grupowy_momentow(lista_uruchomien_adam, exp_id=grupa['id'], exp_name=grupa['name'])
         print(f"Ukończono generowanie wykresów dla grupy {grupa['id']}.\n")
 
 if __name__ == "__main__":

@@ -1,0 +1,13 @@
+RAPORT Z PRZEBIEGU: Himmelblau test punktów startowych 
+ID grupy wykresów:  EXP_P_005
+Punkt startowy:     [9. 7.]
+PARAMETRY ALGORYTMU ADAM:
+Alpha:    0.2
+Beta1:    0.9
+Beta2:    0.999
+Eps:      1e-08
+Max iter: 1000
+Wyniki działania algorytmu:
+Wykonanych iteracji: 478
+Znalezione minimum:  [3.00000281 1.99999551]
+Wartość funkcji:     0.0000000004

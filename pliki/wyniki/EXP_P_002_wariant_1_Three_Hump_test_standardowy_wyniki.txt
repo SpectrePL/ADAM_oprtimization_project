@@ -1,0 +1,13 @@
+RAPORT Z PRZEBIEGU: Three Hump test standardowy
+ID grupy wykresów:  EXP_P_002
+Punkt startowy:     [-5.  5.]
+PARAMETRY ALGORYTMU ADAM:
+Alpha:    0.2
+Beta1:    0.9
+Beta2:    0.999
+Eps:      1e-08
+Max iter: 1000
+Wyniki działania algorytmu:
+Wykonanych iteracji: 725
+Znalezione minimum:  [-1.74753659  0.87376814]
+Wartość funkcji:     0.2986384437

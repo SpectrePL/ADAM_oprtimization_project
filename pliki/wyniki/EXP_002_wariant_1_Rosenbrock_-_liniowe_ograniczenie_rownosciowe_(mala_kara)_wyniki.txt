@@ -2,12 +2,12 @@ RAPORT Z PRZEBIEGU: Rosenbrock - liniowe ograniczenie rownosciowe (mala kara)
 ID grupy wykresów:  EXP_002
 Punkt startowy:     [-5. 10.]
 PARAMETRY ALGORYTMU ADAM:
-Alpha:    0.01
+Alpha:    0.2
 Beta1:    0.9
 Beta2:    0.999
 Eps:      1e-08
-Max iter: 50000
+Max iter: 1000
 Wyniki działania algorytmu:
-Wykonanych iteracji: 13629
-Znalezione minimum:  [0.99998142 0.9999631 ]
-Wartość funkcji:     0.0000000025
+Wykonanych iteracji: 1000
+Znalezione minimum:  [-2.20852131  4.8737922 ]
+Wartość funkcji:     15.4468068948

@@ -23,6 +23,8 @@ class ADAM:
         #dane do wizualizacji
         self.historia_pozycji=[np.copy(self.x)] 
         self.historia_wartosci=[self.funkcja.fval(self.x)]
+        self.historia_m = [np.copy(self.m)]
+        self.historia_v = [np.copy(self.v)]
 
         self.brak_zmian = 0
         self.brak_zmian_maxiter = 10
@@ -41,6 +43,8 @@ class ADAM:
             #tu zapis do historii, by robić wizkę
             self.historia_pozycji.append(np.copy(self.x))
             self.historia_wartosci.append(self.funkcja.fval(self.x))
+            self.historia_m.append(np.copy(self.m))
+            self.historia_v.append(np.copy(self.v))
             #tu się dorobi ekstra warunek stopu
             if self.t>self.brak_zmian_maxiter:
                 for i in range(self.brak_zmian_maxiter):
@@ -321,3 +325,56 @@ def wykres_grupowy_poziomicowy(lista_adamow, exp_id, exp_name, margines=0.2, ges
     czysta_nazwa = exp_name.replace(' ', '_').replace('/', '_')
     plt.savefig(os.path.join('wyniki', f"{exp_id}_{czysta_nazwa}_Wspolne_Poziomice.png"), dpi=300, bbox_inches='tight')
     plt.close()
+
+def wykres_grupowy_momentow(lista_adamow, exp_id, exp_name):
+    if not lista_adamow: return
+    print(f"Generowanie zbiorczego wykresu momentów dla grupy {exp_id}...")
+
+    # Zwiększamy nieco szerokość, żeby zmieścić wspólną legendę z boku
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
+    paleta = ['black', 'darkgreen', 'darkred', 'purple', 'darkorange', 'saddlebrown']
+
+    for idx, instancja in enumerate(lista_adamow):
+        hist_m = np.array(instancja.historia_m)
+        hist_v = np.array(instancja.historia_v)
+        iteracje = np.arange(len(hist_m))
+        kolor = paleta[idx % len(paleta)]
+        
+        etykieta = f"Wariant {idx+1}"
+
+        # Rysujemy pierwszy moment (m)
+        ax1.plot(iteracje, hist_m[:, 0], color=kolor, linestyle='-', alpha=0.8, linewidth=1.5, label=f'{etykieta} (Oś X1)')
+        ax1.plot(iteracje, hist_m[:, 1], color=kolor, linestyle=':', alpha=0.8, linewidth=2.0, label=f'{etykieta} (Oś X2)')
+
+        # Rysujemy drugi moment (v)
+        ax2.plot(iteracje, hist_v[:, 0], color=kolor, linestyle='-', alpha=0.8, linewidth=1.5, label=f'{etykieta} (Oś X1)')
+        ax2.plot(iteracje, hist_v[:, 1], color=kolor, linestyle=':', alpha=0.8, linewidth=2.0, label=f'{etykieta} (Oś X2)')
+
+    # Konfiguracja wykresu m
+    ax1.set_title('Pierwszy moment (m) - Pęd')
+    ax1.set_ylabel('Wartość m')
+    ax1.grid(True, linestyle='--', alpha=0.4)
+
+    # Konfiguracja wykresu v
+    ax2.set_title('Drugi moment (v) - Wariancja (Skala logarytmiczna)')
+    ax2.set_xlabel('Iteracja')
+    ax2.set_ylabel('Wartość v')
+    ax2.set_yscale('log')
+    ax2.grid(True, linestyle='--', alpha=0.4)
+
+    # Wyciągamy legendę wspólną dla obu wykresów i wyrzucamy ją na zewnątrz
+    handles, labels = ax1.get_legend_handles_labels()
+    fig.legend(handles, labels, loc='center right', bbox_to_anchor=(1.25, 0.5))
+
+    plt.suptitle(f'[{exp_id}] {exp_name} - Zbiorcze zmiany momentów')
+    
+    # Korygujemy marginesy, żeby legenda nie ucięła się przy zapisie
+    plt.tight_layout(rect=[0, 0, 0.85, 1]) 
+
+    # Zapis
+    os.makedirs('wyniki', exist_ok=True)
+    czysta_nazwa = exp_name.replace(' ', '_').replace('/', '_')
+    nazwa_pliku = os.path.join('wyniki', f"{exp_id}_{czysta_nazwa}_Wspolne_Momenty.png")
+    plt.savefig(nazwa_pliku, dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"Gotowe! Zapisano jako: {nazwa_pliku}")
