@@ -284,8 +284,6 @@ def wykres_grupowy_poziomicowy(lista_adamow, exp_id, exp_name, margines=0.2, ges
             
     plt.figure(figsize=(11, 8))
     # Zamiast: cp = plt.contour(X, Y, Z, levels=50, cmap='viridis', alpha=0.5)
-    
-    # OBLICZENIE NIELINIOWYCH POZIOMÓW DLA WYKRESU GRUPOWEGO
     z_min, z_max = Z.min(), Z.max()
     poziomy = z_min + (np.linspace(0, 1, 60) ** 3) * (z_max - z_min)
     

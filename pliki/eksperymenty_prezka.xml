@@ -255,8 +255,8 @@
 
 
         <experiment id="EXP_P_011">
-            <name>Himmelblau - wplyw beta 1 na momenty</name>
-            <function_name>Rosenbrock</function_name>
+            <name>Himmelblau - wplyw beta na momenty</name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
                 <coordinate>5.0</coordinate>
@@ -271,7 +271,7 @@
 
         <experiment id="EXP_P_011">
             <name>Himmelblau - wplyw beta 1 na momenty</name>
-            <function_name>Rosenbrock</function_name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
                 <coordinate>5.0</coordinate>
@@ -285,7 +285,7 @@
 
         <experiment id="EXP_P_011">
             <name>Himmelblau - wplyw beta 1 na momenty</name>
-            <function_name>Rosenbrock</function_name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
                 <coordinate>5.0</coordinate>
@@ -301,7 +301,7 @@
 
         <experiment id="EXP_P_012">
             <name>Himmelblau - wplyw beta 1 na momenty</name>
-            <function_name>Rosenbrock</function_name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
                 <coordinate>5.0</coordinate>
@@ -316,7 +316,7 @@
 
         <experiment id="EXP_P_012">
             <name>Himmelblau - wplyw beta 1 na momenty</name>
-            <function_name>Rosenbrock</function_name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
                 <coordinate>5.0</coordinate>
@@ -330,7 +330,7 @@
 
         <experiment id="EXP_P_012">
             <name>Himmelblau - wplyw beta 1 na momenty</name>
-            <function_name>Rosenbrock</function_name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
                 <coordinate>5.0</coordinate>
@@ -345,7 +345,7 @@
 
         <experiment id="EXP_P_012">
             <name>Himmelblau - wplyw beta 1 na momenty</name>
-            <function_name>Rosenbrock</function_name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
                 <coordinate>5.0</coordinate>
@@ -361,7 +361,7 @@
 
         <experiment id="EXP_P_013">
             <name>Himmelblau - wplyw beta 2 na momenty</name>
-            <function_name>Rosenbrock</function_name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
                 <coordinate>5.0</coordinate>
@@ -376,7 +376,7 @@
 
         <experiment id="EXP_P_013">
             <name>Himmelblau - wplyw beta 2 na momenty</name>
-            <function_name>Rosenbrock</function_name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
                 <coordinate>5.0</coordinate>
@@ -390,7 +390,7 @@
 
         <experiment id="EXP_P_013">
             <name>Himmelblau - wplyw beta 2 na momenty</name>
-            <function_name>Rosenbrock</function_name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-5.0</coordinate>
                 <coordinate>5.0</coordinate>

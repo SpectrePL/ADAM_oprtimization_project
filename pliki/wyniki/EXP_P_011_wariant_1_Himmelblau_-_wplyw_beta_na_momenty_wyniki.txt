@@ -9,5 +9,5 @@ Eps:      1e-08
 Max iter: 100
 Wyniki działania algorytmu:
 Wykonanych iteracji: 100
-Znalezione minimum:  [-2.20383663  4.88237031]
-Wartość funkcji:     10.3294636994
+Znalezione minimum:  [-2.72389785  3.07530975]
+Wartość funkcji:     0.3260482703
