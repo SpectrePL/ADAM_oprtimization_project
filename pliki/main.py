@@ -1,8 +1,7 @@
 import os
 import numpy as np
-
 from funkcje import Sphere, Rosenbrock, Three_Hump, Himmelblau, Wartosc_Kary, Funkcja_Z_Kara, Constraint_Circle
-from ADAM import ADAM, wykres_grupowy_3d, wykres_grupowy_poziomicowy, wykres_grupowy_momentow
+from ADAM import ADAM, wykres_grupowy_3d, wykres_grupowy_poziomicowy, wykres_grupowy_momentow, wykres_grupowy_wartosci_celu
 from parser_xml import wczytaj_konfiguracje_xml
 
 DOSTEPNE_KLASY = {
@@ -73,6 +72,7 @@ def main():
         wykres_grupowy_3d(lista_uruchomien_adam, exp_id=grupa['id'], exp_name=grupa['name'])
         wykres_grupowy_poziomicowy(lista_uruchomien_adam, exp_id=grupa['id'], exp_name=grupa['name'])
         wykres_grupowy_momentow(lista_uruchomien_adam, exp_id=grupa['id'], exp_name=grupa['name'])
+        wykres_grupowy_wartosci_celu(lista_uruchomien_adam, exp_id=grupa['id'], exp_name=grupa['name'])
         print(f"Ukończono generowanie wykresów dla grupy {grupa['id']}.\n")
 
 if __name__ == "__main__":

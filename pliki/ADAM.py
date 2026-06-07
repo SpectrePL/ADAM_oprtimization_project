@@ -283,7 +283,6 @@ def wykres_grupowy_poziomicowy(lista_adamow, exp_id, exp_name, margines=0.2, ges
             Z[i, j] = funkcja_bazowa.fval([X[i, j], Y[i, j]])
             
     plt.figure(figsize=(11, 8))
-    # Zamiast: cp = plt.contour(X, Y, Z, levels=50, cmap='viridis', alpha=0.5)
     z_min, z_max = Z.min(), Z.max()
     poziomy = z_min + (np.linspace(0, 1, 60) ** 3) * (z_max - z_min)
     
@@ -334,7 +333,6 @@ def wykres_grupowy_momentow(lista_adamow, exp_id, exp_name):
     if not lista_adamow: return
     print(f"Generowanie zbiorczego wykresu momentów dla grupy {exp_id}...")
 
-    # Zwiększamy nieco szerokość, żeby zmieścić wspólną legendę z boku
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
     paleta = ['black', 'darkgreen', 'darkred', 'purple', 'darkorange', 'saddlebrown']
 
@@ -346,39 +344,72 @@ def wykres_grupowy_momentow(lista_adamow, exp_id, exp_name):
         
         etykieta = f"Wariant {idx+1}"
 
-        # Rysujemy pierwszy moment (m)
         ax1.plot(iteracje, hist_m[:, 0], color=kolor, linestyle='-', alpha=0.8, linewidth=1.5, label=f'{etykieta} (Oś X1)')
         ax1.plot(iteracje, hist_m[:, 1], color=kolor, linestyle=':', alpha=0.8, linewidth=2.0, label=f'{etykieta} (Oś X2)')
 
-        # Rysujemy drugi moment (v)
         ax2.plot(iteracje, hist_v[:, 0], color=kolor, linestyle='-', alpha=0.8, linewidth=1.5, label=f'{etykieta} (Oś X1)')
         ax2.plot(iteracje, hist_v[:, 1], color=kolor, linestyle=':', alpha=0.8, linewidth=2.0, label=f'{etykieta} (Oś X2)')
 
-    # Konfiguracja wykresu m
+
     ax1.set_title('Pierwszy moment (m) - Pęd')
     ax1.set_ylabel('Wartość m')
     ax1.grid(True, linestyle='--', alpha=0.4)
 
-    # Konfiguracja wykresu v
+
     ax2.set_title('Drugi moment (v) - Wariancja (Skala logarytmiczna)')
     ax2.set_xlabel('Iteracja')
     ax2.set_ylabel('Wartość v')
     ax2.set_yscale('log')
     ax2.grid(True, linestyle='--', alpha=0.4)
 
-    # Wyciągamy legendę wspólną dla obu wykresów i wyrzucamy ją na zewnątrz
     handles, labels = ax1.get_legend_handles_labels()
     fig.legend(handles, labels, loc='center right', bbox_to_anchor=(1.25, 0.5))
 
     plt.suptitle(f'[{exp_id}] {exp_name} - Zbiorcze zmiany momentów')
-    
-    # Korygujemy marginesy, żeby legenda nie ucięła się przy zapisie
     plt.tight_layout(rect=[0, 0, 0.85, 1]) 
 
-    # Zapis
     os.makedirs('wyniki', exist_ok=True)
     czysta_nazwa = exp_name.replace(' ', '_').replace('/', '_')
     nazwa_pliku = os.path.join('wyniki', f"{exp_id}_{czysta_nazwa}_Wspolne_Momenty.png")
     plt.savefig(nazwa_pliku, dpi=300, bbox_inches='tight')
     plt.close()
     print(f"Gotowe! Zapisano jako: {nazwa_pliku}")
+
+def wykres_grupowy_wartosci_celu(lista_adamow, exp_id, exp_name):
+    if not lista_adamow: return
+    print(f"Generowanie zbiorczego wykresu wartości funkcji celu dla grupy {exp_id}...")
+    
+    plt.figure(figsize=(11, 6))
+
+    paleta = ['black', 'darkgreen', 'darkred', 'purple', 'darkorange', 'saddlebrown', 'blue', 'magenta']
+    
+    for idx, instancja in enumerate(lista_adamow):
+        hz = instancja.historia_wartosci
+        iteracje = list(range(len(hz)))
+        kolor = paleta[idx % len(paleta)]
+        
+        try:
+            hx0 = instancja.historia_pozycji[0][0]
+            hy0 = instancja.historia_pozycji[0][1]
+            etykieta = f"Wariant {idx+1} (Start: [{hx0:.1f}, {hy0:.1f}])"
+        except (AttributeError, IndexError):
+            etykieta = f"Wariant {idx+1}"
+            
+        plt.plot(iteracje, hz, color=kolor, linestyle='-', linewidth=2, label=etykieta)
+        
+    plt.title(f'[{exp_id}] {exp_name} - Historia wartości funkcji celu')
+    plt.xlabel('Numer iteracji')
+    plt.ylabel('Wartość f(x)')
+    
+    plt.grid(True, linestyle='--', alpha=0.6)
+    
+    plt.legend(loc='upper right', bbox_to_anchor=(1.45, 1.0))
+
+    plt.yscale('log')
+    
+    os.makedirs('wyniki', exist_ok=True)
+    czysta_nazwa = exp_name.replace(' ', '_').replace('/', '_')
+    sciezka_zapisu = os.path.join('wyniki', f"{exp_id}_{czysta_nazwa}_Wspolne_Wartosci.png")
+    
+    plt.savefig(sciezka_zapisu, dpi=300, bbox_inches='tight')
+    plt.close()
