@@ -5,7 +5,7 @@
         <beta1>0.9</beta1>
         <beta2>0.999</beta2>
         <eps>1e-8</eps>
-        <max_iter>100000</max_iter>
+        <max_iter>1000</max_iter>
     </adam_defaults>
 
     <experiments>
@@ -68,6 +68,10 @@
                 <coordinate>6.0</coordinate>
             </start_point>
             <is_constrained>false</is_constrained>
+
+            <hyperparameters>
+                <param name="max_iter">100000</param>
+            </hyperparameters>
         </experiment>
 
         <experiment id="EXP_P_005">
@@ -179,7 +183,7 @@
 
         <experiment id="EXP_P_009">
             <name>Himmelblau - ograniczenia </name>
-            <function_name>Three_Hump</function_name>
+            <function_name>Himmelblau</function_name>
             <start_point>
                 <coordinate>-1.0</coordinate>
                 <coordinate>1.0</coordinate>
@@ -403,7 +407,29 @@
             </hyperparameters>
         </experiment>
 
-
+                <experiment id="EXP_P_014">
+            <name>Rosenbrock - liniowe ograniczenie rownosciowe</name>
+            <function_name>Rosenbrock</function_name>
+            <start_point>
+                <coordinate>5.0</coordinate>
+                <coordinate>10.0</coordinate>
+            </start_point>
+            <is_constrained>true</is_constrained>
+            
+            <penalty_config>
+                <r>500.0</r>
+                <constraints>
+                    <constraint type="equality">
+                        <class_name>Wartosc_Kary</class_name>
+                        <parameters>
+                            <param name="a">-0.5</param>
+                            <param name="b">-1.0</param>
+                            <param name="c">1.5</param>
+                        </parameters>
+                    </constraint>
+                </constraints>
+            </penalty_config>
+        </experiment>
 
     </experiments>
 </optimization_project>
